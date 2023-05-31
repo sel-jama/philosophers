@@ -6,42 +6,42 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 04:10:31 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/05/26 03:26:27 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/05/27 09:14:17 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// int main(int argc, char *argv[]) {
-//     t_philo philo;
-//     void *forks;
-//     philo.data.forks = forks;
-//     sim_data.print_mutex = &print_mutex;
-//     sim_data.eat_count = eat_count;
-//     i = 0;
-//     while(i < sim_data.number_of_philos)
-//     {
-//         PhilosopherData *philosopher_data = malloc(sizeof(PhilosopherData));
-//         philosopher_data->philo_number = i + 1;
-//         philosopher_data->sim_data = &sim_data;
-//         pthread_create(&philosophers[i], NULL, philosopher_thread, philosopher_data);
-//         i++;
-//     }
-//     i = 0;
-//     while(i < sim_data.number_of_philos)
-//     {
-//         pthread_join(philosophers[i], NULL);
-//         i++;
-//     }
-//     i = 0;
-//     while(i < sim_data.number_of_philos)
-//     {
-//         pthread_mutex_destroy(&forks[i]);
-//         i++;
-//     }
-//     pthread_mutex_destroy(&print_mutex);
-//     return 0;
-// }
+int main(int argc, char *argv[]) {
+    t_philo philo;
+    void *forks;
+    philo.data.forks = forks;
+    sim_data.print_mutex = &print_mutex;
+    sim_data.eat_count = eat_count;
+    i = 0;
+    while(i < sim_data.number_of_philos)
+    {
+        PhilosopherData *philosopher_data = malloc(sizeof(PhilosopherData));
+        philosopher_data->philo_number = i + 1;
+        philosopher_data->sim_data = &sim_data;
+        pthread_create(&philosophers[i], NULL, philosopher_thread, philosopher_data);
+        i++;
+    }
+    i = 0;
+    while(i < sim_data.number_of_philos)
+    {
+        pthread_join(philosophers[i], NULL);
+        i++;
+    }
+    i = 0;
+    while(i < sim_data.number_of_philos)
+    {
+        pthread_mutex_destroy(&forks[i]);
+        i++;
+    }
+    pthread_mutex_destroy(&print_mutex);
+    return 0;
+}
 
 
 
