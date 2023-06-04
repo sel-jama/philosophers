@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 03:58:37 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/05/31 06:54:07 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/04 13:04:45 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,19 @@ void    *philosopher_routine(void *arg)
     t_philo *philo;
     t_data  *data;
     int     philo_id;
-    int     l_fork;
-    int     r_fork;
 
     philo = (t_philo*)arg;
     data = philo->data;
     philo_id = philo->philo_num;
-    l_fork = (philo_id - 1) % data->num_of_philos;
-    r_fork = (philo_id) % data->num_of_philos;
+    data->r_fork = (philo_id) % data->num_of_philos;
+    data->l_fork = (philo_id - 1) % data->num_of_philos;
+    printf("l %d r %d\n", data->l_fork, data->r_fork);
     while(1)
     {
+        if (data->fork_position[data->r_fork] == F_AVAILABLE && data->fork_position[data->l_fork] == F_AVAILABLE)
+        {
             pickup_forks(philo_id, &data);
+            printf("cur time%lld begin %lld\n", ft_ms_cur_time(), data->time_ref);
             data->last_meal_time = ft_ms_cur_time() - ft_time_in_ms(&(data->time_ref));
             ft_print_case(philo_id, &data, "is eating");
             usleep(data->time_to_eat);
@@ -35,13 +37,18 @@ void    *philosopher_routine(void *arg)
             ft_print_case(philo_id, &data, "is sleeping");
             usleep(data->time_to_sleep);
             ft_print_case(philo_id, &data, "is thiking");
+        }
+        else
+            usleep(50);
     }
 }
 void    pickup_forks(int philo_num, t_data **data)
 {
     pthread_mutex_lock(&(*data)->forks[philo_num - 1]);
+    (*data)->fork_position[(*data)->r_fork] = F_TAKEN;
     ft_print_case(philo_num, data, "has taken a fork");
     pthread_mutex_lock(&(*data)->forks[philo_num % (*data)->num_of_philos]);
+    (*data)->fork_position[(*data)->l_fork] = F_TAKEN;
     ft_print_case(philo_num, data, "has taken a fork");
 }
 void    putdown_forks(int philo_num, t_data **data)

@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 21:08:55 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/05/31 06:23:53 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/04 12:57:44 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,7 @@ int  ft_strlen(const char *s)
 
         i = 0;
         while (s[i] != '\0')
-        {
-                i++;
-        }
+			i++;
         return (i);
 }
 long long	ft_time_in_ms(struct timeval *time)
