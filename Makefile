@@ -14,7 +14,7 @@ SRCS = init.c philo.c treads.c utils.c
 
 OBJS = ${SRCS:.c=.o}
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread
 
 NAME = philo
 

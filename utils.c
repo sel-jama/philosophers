@@ -12,6 +12,7 @@
 
 #include "philo.h"
 
+
 void    ft_error_exit(char *msg, int n)
 {
         write(2, "Error\n", 7);

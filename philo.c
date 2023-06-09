@@ -12,44 +12,65 @@
 
 #include "philo.h"
 
+/*void	*ft_check_death(void *arg)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *)arg;
+    philo->data->is_dead = 0;
+	while (1)
+	{
+		if (philo->next_meal < ft_get_time())
+		{
+			philo->data->is_dead = 1;
+			pthread_mutex_lock(philo->eat);
+			print_message()
+			pthread_mutex_unlock(philo->data->stop);
+			break ;
+		}
+	}
+	return (NULL);
+}*/
+
 int main(int ac, char **av)
 {
     if (ac == 5)
     {
-        t_data      data;
-        t_philo     *philo_data;
-        pthread_t   philos[4];
+        t_data      *data;
+        t_philo     *philo;
         int         i;
-        init_philo_data(&data, av);
-        init_forks(&data);
         i =0;   
-        philo_data = malloc(sizeof(t_philo));
-        philo_data->data = &data;
-        while (i < data.num_of_philos)
+        data = malloc(sizeof(t_data));
+        init_philo_data(data, av);
+        philo = malloc(sizeof(t_philo) * data->num_of_philos);
+        init_forks(data);
+        init_data(data);
+        while (i < data->num_of_philos)
         {
-            philo_data->philo_num = i + 1;
-            pthread_create(&philos[i], NULL, philosopher_routine, philo_data);
-            // if (ft_ms_cur_time() - philo_data->data->last_meal_time > philo_data->data->time_to_die * 1000)
-            // {
-            //     printf("heere %lld ",philo_data->data->last_meal_time);
-            //     printf("philosopher %d has died\n", philo_data->philo_num);
-            //     exit(1);
-            // }
+            pthread_create(&(data->philo[i]).id, NULL, philosopher_routine, &data->philo[i])
+            usleep(50);
             i++;
+        }
+        while(1)
+        {
+            i = 0;
+            while(i < philo->data->num_of_philos)
+            {
+                if (ft_ms_cur_time() - philo->last_meal_time > data->time_to_die)
+                {
+                    ft_print_case(philo->philo_num, &philo->data, "died", 1);
+                    return (1);
+                }
+                i++;
+            }
         }
         i = 0;
-        while (i < data.num_of_philos)
+        while(i < data->num_of_philos)
         {
-            pthread_join(philos[i], NULL);
+            pthread_mutex_destroy(&data->forks[i]);
             i++;
         }
-        i = 0;
-        while(i < data.num_of_philos)
-        {
-            pthread_mutex_destroy(&data.forks[i]);
-            i++;
-        }
-        pthread_mutex_destroy(&data.print_mutex);
+        pthread_mutex_destroy(&data->print_mutex);
     }
     else
         printf("Invalid number of arguments\n");

@@ -23,32 +23,26 @@ void    *philosopher_routine(void *arg)
     philo_id = philo->philo_num;
     data->r_fork = (philo_id) % data->num_of_philos;
     data->l_fork = (philo_id - 1) % data->num_of_philos;
-    printf("l %d r %d\n", data->l_fork, data->r_fork);
+    //printf("l %d r %d\n", data->l_fork, data->r_fork);
     while(1)
     {
-        if (data->fork_position[data->r_fork] == F_AVAILABLE && data->fork_position[data->l_fork] == F_AVAILABLE)
-        {
-            pickup_forks(philo_id, &data);
-            printf("cur time%lld begin %lld\n", ft_ms_cur_time(), data->time_ref);
-            data->last_meal_time = ft_ms_cur_time() - ft_time_in_ms(&(data->time_ref));
-            ft_print_case(philo_id, &data, "is eating");
+        if ( philo_id % 2 == 0)
             usleep(data->time_to_eat);
-            putdown_forks(philo_id, &data);
-            ft_print_case(philo_id, &data, "is sleeping");
-            usleep(data->time_to_sleep);
-            ft_print_case(philo_id, &data, "is thiking");
-        }
-        else
-            usleep(50);
+        pickup_forks(philo_id, &data);
+        data->last_meal_time = ft_ms_cur_time() - data->time_start * 1000;
+        ft_print_case(philo_id, &data, "is eating");
+        usleep(data->time_to_eat);
+        putdown_forks(philo_id, &data);
+        ft_print_case(philo_id, &data, "is sleeping");
+        usleep(data->time_to_sleep);
+        ft_print_case(philo_id, &data, "is thiking");
     }
 }
 void    pickup_forks(int philo_num, t_data **data)
 {
     pthread_mutex_lock(&(*data)->forks[philo_num - 1]);
-    (*data)->fork_position[(*data)->r_fork] = F_TAKEN;
     ft_print_case(philo_num, data, "has taken a fork");
     pthread_mutex_lock(&(*data)->forks[philo_num % (*data)->num_of_philos]);
-    (*data)->fork_position[(*data)->l_fork] = F_TAKEN;
     ft_print_case(philo_num, data, "has taken a fork");
 }
 void    putdown_forks(int philo_num, t_data **data)
@@ -57,14 +51,16 @@ void    putdown_forks(int philo_num, t_data **data)
     pthread_mutex_unlock(&(*data)->forks[philo_num % (*data)->num_of_philos]);
 }
 
-void   ft_print_case(int philo_num, t_data **data, char *s)
+void   ft_print_case(int philo_num, t_data **data, char *s, int k)
 {
     long long   case_time;
     pthread_mutex_lock(&(*data)->print_mutex);
-    case_time = ft_ms_cur_time() - ft_time_in_ms(&((*data)->time_ref));
+    case_time = ft_ms_cur_time() - (*data)->time_start * 1000;
     printf("%lld %d %s\n", case_time, philo_num, s);
-    pthread_mutex_unlock(&(*data)->print_mutex);
+    if (k = 0)
+        pthread_mutex_unlock(&(*data)->print_mutex);
 }
+
 long long ft_ms_cur_time()
 {
     struct timeval cur_time;

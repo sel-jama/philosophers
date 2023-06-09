@@ -12,18 +12,31 @@
 
 #include "philo.h"
 
+void init_data(t_data *data)
+{
+    int i = 0;
+    
+    while(i < data->num_of_philos)
+    {
+        data->philo[i].philo_num = i + 1;
+        data->philo[i].data = data;
+        data->philo[i].last_meal_time = 0;
+        data->ph
+        i++;
+    }
+}
+
 void    init_philo_data(t_data *data, char **av)
 {
-    struct timeval start;
-    
+    if ac == 5 ac == 6
     data->num_of_philos = ft_atoi(av[1]);
     data->time_to_die = ft_atoi(av[2]);
     data->time_to_eat = ft_atoi(av[3]);
     data->time_to_sleep = ft_atoi(av[4]);
-    data->last_meal_time = 0;
-    gettimeofday(&start, NULL);
-    data->time_ref = start.tv_sec * 1000 + start.tv_usec / 1000;
-    
+    if ac == 6
+        data meals == ft atoi av 5
+    gettimeofday(&data->time_ref, NULL);
+    data->time_start = data->time_ref.tv_sec * 1000 + data->time_ref.tv_usec / 1000;
 }
 
 void    init_forks(t_data *data)

@@ -30,12 +30,10 @@ void *philosopher_thread(void *arg) {
 
         pick_forks(philosopher_number, sim_data);
         print_message(philosopher_number, "is eating", sim_data);
-        usleep(sim_data->time_to_eat * 1000);
+        usleep(sim_data->time_to_eat);
         release_forks(philosopher_number, sim_data);
-
         print_message(philosopher_number, "is sleeping", sim_data);
-        usleep(sim_data->time_to_sleep * 1000);
-
+        usleep(sim_data->time_to_sleep);
         print_message(philosopher_number, "is thinking", sim_data);
     }
 }
