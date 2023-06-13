@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 03:58:37 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/12 20:25:53 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/13 01:44:50 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,22 @@ void    *philosopher_routine(void *arg)
     philo = (t_philo*)arg;
     philo_id = philo->philo_num;
     data = philo->data;
+    // printf("here %d\n", philo->philo_num);
     while(1)
     {
         if ( philo_id % 2 == 0)
-            usleep(data->time_to_eat);
+            ft_usleep(data->time_to_eat);
         pickup_forks(philo_id, philo);
+        pthread_mutex_lock(&philo->last_meal_mutex);
         philo->last_meal_time = ft_ms_cur_time() - data->time_start;
+        pthread_mutex_unlock(&philo->last_meal_mutex);
         ft_print_case(philo_id, &data, "is eating", 0);
-        usleep(data->time_to_eat);
+        ft_usleep(data->time_to_eat);
         putdown_forks(philo);
         ft_print_case(philo_id, &data, "is sleeping", 0);
-        usleep(data->time_to_sleep);
+        ft_usleep(data->time_to_sleep);
         ft_print_case(philo_id, &data, "is thiking", 0);
+        
     }
 }
 void    pickup_forks(int philo_num, t_philo *philo)
@@ -52,17 +56,16 @@ void   ft_print_case(int philo_num, t_data **data, char *s, int death)
 {
     long long   case_time;
     pthread_mutex_lock(&(*data)->print_mutex);
-    case_time = ft_ms_cur_time() - (*data)->time_start * 1000;
-    printf("%lld %d %s\n", case_time, philo_num, s);
+    case_time = ft_ms_cur_time() - (*data)->time_start;
+    printf("%lldms %d %s\n", case_time, philo_num, s);
     if (death == 0)
         pthread_mutex_unlock(&(*data)->print_mutex);
 }
 
 long long ft_ms_cur_time()
 {
-    struct timeval cur_time;
-    long long case_duration;
-    gettimeofday(&cur_time, NULL);
-    case_duration = cur_time.tv_sec * 1000 + cur_time.tv_usec / 1000;
-    return (case_duration);
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    // printf("time %lld\n", (tv.tv_sec * 1000LL) + (tv.tv_usec / 1000LL));
+    return (tv.tv_sec * 1000LL) + (tv.tv_usec / 1000LL);
 }

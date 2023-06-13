@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 21:08:55 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/04 12:57:44 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/12 23:40:29 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,15 @@ int  ft_strlen(const char *s)
 			i++;
         return (i);
 }
-long long	ft_time_in_ms(struct timeval *time)
+// long long	ft_time_in_ms(struct timeval *time)
+// {
+// 	return (time->tv_sec * 1000 + time->tv_usec / 1000);
+// }
+
+void	ft_usleep(long long sleep_dur)
 {
-	return (time->tv_sec * 1000 + time->tv_usec / 1000);
+	long long now_time;
+	now_time = ft_ms_cur_time();
+	while(ft_ms_cur_time() - now_time < sleep_dur)
+		usleep(10);
 }
