@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 03:58:37 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/13 01:44:50 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/14 01:23:45 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,23 @@ void    *philosopher_routine(void *arg)
     philo = (t_philo*)arg;
     philo_id = philo->philo_num;
     data = philo->data;
+    // printf("r %d l %d\n", philo->r_fork, philo->l_fork);
     // printf("here %d\n", philo->philo_num);
     while(1)
     {
-        if ( philo_id % 2 == 0)
+        if (philo_id % 2 == 0)
             ft_usleep(data->time_to_eat);
         pickup_forks(philo_id, philo);
         pthread_mutex_lock(&philo->last_meal_mutex);
         philo->last_meal_time = ft_ms_cur_time() - data->time_start;
+        // printf("thread %d last meal : %lld\n",philo->philo_num, philo->last_meal_time);
         pthread_mutex_unlock(&philo->last_meal_mutex);
         ft_print_case(philo_id, &data, "is eating", 0);
         ft_usleep(data->time_to_eat);
         putdown_forks(philo);
         ft_print_case(philo_id, &data, "is sleeping", 0);
         ft_usleep(data->time_to_sleep);
-        ft_print_case(philo_id, &data, "is thiking", 0);
-        
+        ft_print_case(philo_id, &data, "is thiking", 0);  
     }
 }
 void    pickup_forks(int philo_num, t_philo *philo)
