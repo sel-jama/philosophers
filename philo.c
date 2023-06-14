@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 07:19:19 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/14 01:30:04 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/14 01:38:09 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,6 @@ int main(int ac, char **av)
             ft_usleep(10);
             i++;
         }
-        // while(1)
-        // {
-        //     i = 0;
-        //     while(i < philo->data->num_of_philos)
-        //     {
-        //         if (ft_ms_cur_time() - philo[i].last_meal_time > data->time_to_die)
-        //         {
-        //             philo->data->death = 1;
-        //             ft_print_case(philo[i].philo_num, &philo->data, "died", 1);
-        //             return (1);
-        //         }
-        //         i++;
-        //     }
-        // }
         while (!data->death)
         {
             i = 0;
@@ -61,7 +47,7 @@ int main(int ac, char **av)
                 }
                 pthread_mutex_unlock(&philo[i].last_meal_mutex);
                 i++;
-        }
+            }
         }
         i = 0;
         while(i < philo->data->num_of_philos)

@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 03:58:37 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/14 01:23:45 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/14 01:39:16 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void    *philosopher_routine(void *arg)
     data = philo->data;
     // printf("r %d l %d\n", philo->r_fork, philo->l_fork);
     // printf("here %d\n", philo->philo_num);
+    if (philo_id % 2 == 0)
+        ft_usleep(data->time_to_eat);
     while(1)
     {
-        if (philo_id % 2 == 0)
-            ft_usleep(data->time_to_eat);
         pickup_forks(philo_id, philo);
         pthread_mutex_lock(&philo->last_meal_mutex);
         philo->last_meal_time = ft_ms_cur_time() - data->time_start;
