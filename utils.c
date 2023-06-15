@@ -6,18 +6,17 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 21:08:55 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/14 00:49:24 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/15 20:51:53 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-
-void    ft_error_exit(char *msg, int n)
+void	ft_error_exit(char *msg, int n)
 {
-        write(2, "Error\n", 7);
-        write(2 ,msg, ft_strlen(msg));
-        exit(n);
+	write(2, "Error\n", 7);
+	write(2, msg, ft_strlen(msg));
+	exit(n);
 }
 
 int	ft_atoi(const char *str)
@@ -45,19 +44,21 @@ int	ft_atoi(const char *str)
 	return (sign * nb);
 }
 
-int  ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-        int  i;
+	int	i;
 
-        i = 0;
-        while (s[i] != '\0')
-			i++;
-        return (i);
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
+
 void	ft_usleep(long long sleep_dur)
 {
-	long long now_time;
+	long long	now_time;
+
 	now_time = ft_ms_cur_time();
-	while(ft_ms_cur_time() - now_time < sleep_dur)
+	while (ft_ms_cur_time() - now_time < sleep_dur)
 		usleep(10);
 }
