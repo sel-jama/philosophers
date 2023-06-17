@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 03:58:37 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/15 22:00:02 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/17 04:03:24 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,4 @@ long long	ft_ms_cur_time(void)
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000LL) + (tv.tv_usec / 1000LL));
 }
+ 

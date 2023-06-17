@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 08:56:32 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/15 22:05:46 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/16 05:09:03 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_data(t_philo *philo, t_data *data, int num_of_philos)
 	}
 }
 
-void	init_philo_data(t_data *data, char **av)
+void	init_philo_data(t_data *data, char **av, int ac)
 {
 	data->num_of_philos = ft_atoi(av[1]);
 	data->time_to_die = ft_atoi(av[2]);
@@ -40,7 +40,7 @@ void	init_philo_data(t_data *data, char **av)
 		data->meals = ft_atoi(av[5]);
 }
 
-void	init_forks(t_data *data)
+int	init_forks(t_data *data)
 {
 	int				i;
 	pthread_mutex_t	*forks;
@@ -51,9 +51,10 @@ void	init_forks(t_data *data)
 	while (i < data->num_of_philos)
 	{
 		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
-			ft_error_exit("failed to initialize mutex", 1);
+			return (ft_error("failed to initialize mutex"), 0);
 		i++;
 	}
 	if (pthread_mutex_init(&data->print_mutex, NULL) != 0)
-		ft_error_exit("failed to initialize mutex", 1);
+		return (ft_error("failed to initialize mutex"), 0);
+	return (1);
 }

@@ -6,25 +6,25 @@
 #    By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 07:46:18 by sel-jama          #+#    #+#              #
-#    Updated: 2023/06/13 04:53:12 by sel-jama         ###   ########.fr        #
+#    Updated: 2023/06/16 05:18:00 by sel-jama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = init.c philo.c treads.c utils.c
+SRCS_BONUS = init.c philo_bonus.c treads.c utils.c
 
-OBJS = ${SRCS:.c=.o}
+OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror
 
-NAME = philo
+NAME = philo_bonus
 
 all: ${NAME}
 
-${NAME} : ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+${NAME} : ${OBJS_BONUS}
+	${CC} ${CFLAGS} ${OBJS_BONUS} -o ${NAME}
 
 clean:
-	@rm -f ${OBJS}
+	@rm -f ${OBJS_BONUS}
 
 fclean: clean
 	@rm -f ${NAME}
