@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:49:42 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/19 09:26:22 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:10:10 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_data
 	int				death;
 	long long		time_start;
 	pid_t			*pid;
-	sem_t	*forks;
+	sem_t	*fork_sem;
 	sem_t	*print_sem;
 }t_data;
 
@@ -42,19 +42,19 @@ typedef struct s_philo
 	t_data			*data;
 }t_philo;
 
-void		init_data(t_philo *philo, t_data *data, int num_of_philos);
-void		init_philo_data(t_data *data, char **av, int ac);
-int			open_forks(t_data *data);
+void		init_philo_data(t_philo *philo, t_data *data, char **av, int ac);
+void		start_philos(t_data data);
 void		routine(t_philo philo);
-void		pickup_forks(int philo_num, t_philo *philo);
-void		putdown_forks(t_philo *philo);
-void		ft_print_case(int philo_num, t_data **data, char *s, int death);
+int			open_forks(t_data *data);
+void		pickup_forks(int philo_num, t_philo philo);
+void		putdown_forks(t_philo philo);
+void		ft_print_case(int philo_num, t_data *data, char *s, int death);
 void		ft_error(char *msg);
 int			ft_atoi(const char *str);
 long long	ft_ms_cur_time(void);
 void		ft_usleep(long long sleep_dur);
 int			ft_strlen(const char *s);
-void		check_death(t_philo *philo, t_data *data);
+void		*alive_or_dead(void *arg);
 void		clean_up_memory(t_philo *philo, t_data *data);
 
 #endif
