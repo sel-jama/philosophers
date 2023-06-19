@@ -6,11 +6,11 @@
 #    By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 07:46:18 by sel-jama          #+#    #+#              #
-#    Updated: 2023/06/16 05:18:00 by sel-jama         ###   ########.fr        #
+#    Updated: 2023/06/17 06:52:14 by sel-jama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS_BONUS = init.c philo_bonus.c treads.c utils.c
+SRCS_BONUS = init_open.c philo_bonus.c children_philos.c utils_bonus.c
 
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 
