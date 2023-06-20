@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:49:14 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/19 14:11:04 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/20 07:16:20 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void	*alive_or_dead(void *arg)
 		{
 			philo->data->death = 1;
 			ft_print_case(philo->philo_num, philo->data, "died", 1);
-			exit(0);
+			exit(5);
 		}
+		usleep(100);
 	}
 }
 
@@ -41,19 +42,27 @@ int	main(int ac, char **av)
 	t_philo	philo;
 
 	int		i;
+	int		exit_status;
 
 	if (ac == 5 || ac == 6)
 	{
-		sem_unlink("forks_sem");
-		sem_unlink("print_sem");
+		sem_unlink("/forks_sem");
+		sem_unlink("/print_sem");
 		i = 0;
+		philo.data = &data;
 		data.time_start = ft_ms_cur_time();
 		init_philo_data(&philo, &data, av, ac);
 		if (!open_forks(&data))
-			return (0);
+			return (1);
 		data.pid = malloc(sizeof(pid_t) * data.num_of_philos);
 		start_philos(data);
 		//waitpid
+		while (1)
+		{
+			waitpid(-1, &exit_status, 0);
+			if (WEXITSTATUS(exit_status) == 5)
+				break;
+		}
 		i = 0;
 		while(i < data.num_of_philos)
 		{
@@ -63,7 +72,7 @@ int	main(int ac, char **av)
 		sem_close(data.print_sem);
 		sem_unlink("fork_sem");
 		sem_unlink("print_sem");
-		clean_up_memory(&philo, &data);
+		// clean_up_memory(&philo, &data);
 	}
 	else
 		printf("Invalid number of arguments\n");

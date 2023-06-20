@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:51:10 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/19 14:09:44 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/20 06:58:11 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	init_philo_data(t_philo *philo, t_data *data, char **av, int ac)
 {
-	philo->data = data;
 	data->num_of_philos = ft_atoi(av[1]);
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
@@ -27,10 +26,12 @@ void	init_philo_data(t_philo *philo, t_data *data, char **av, int ac)
 
 int	open_forks(t_data *data)
 {
-	if ((data->fork_sem = sem_open("/forks", O_CREAT, 0644, data->num_of_philos)))
-			return (ft_error("failed to open semaphore"), 0);
-	if ((data->print_sem = sem_open("/print_sem", O_CREAT, 0644, 1)))
-		return (ft_error("failed to open semaphore"), 0);
+	data->fork_sem = sem_open("/fork_sem", O_CREAT, 0644, data->num_of_philos);
+	if (data->fork_sem == SEM_FAILED)
+			return (ft_error("failed to open fork semaphore"), 0);
+	data->print_sem = sem_open("/print_sem", O_CREAT, 0644, 1);
+	if (data->print_sem == SEM_FAILED)
+		return (ft_error("failed to open print semaphore"), 0);
 	return (1);
 }
 void	start_philos(t_data data)
@@ -45,8 +46,6 @@ void	start_philos(t_data data)
 		data.pid[i] = fork();
 		if (data.pid[i] == 0)
 			routine(philo);
-		else 
-			exit(1);
 		i++;
 	}
 }

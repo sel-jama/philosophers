@@ -6,13 +6,14 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:49:42 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/19 14:10:10 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/20 06:51:28 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 # include <pthread.h>
+# include <fcntl.h>
 # include <semaphore.h>  
 # include <stdio.h>
 # include <stdlib.h>
@@ -38,7 +39,6 @@ typedef struct s_philo
 	int				philo_num;
 	pthread_t		id;
 	long long		last_meal_time;
-	pthread_mutex_t	last_meal_mutex;
 	t_data			*data;
 }t_philo;
 
