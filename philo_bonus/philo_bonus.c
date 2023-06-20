@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:49:14 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/20 07:16:20 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/20 12:51:36 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	*alive_or_dead(void *arg)
 	philo = (t_philo *)arg;
 	while (1)
 	{
+		sem_wait(philo->data->last_meal_sem);
 		if (ft_ms_cur_time() - philo->data->time_start
 			- philo->last_meal_time > philo->data->time_to_die)
 		{
@@ -26,14 +27,9 @@ void	*alive_or_dead(void *arg)
 			ft_print_case(philo->philo_num, philo->data, "died", 1);
 			exit(5);
 		}
-		usleep(100);
+		sem_post(philo->data->last_meal_sem);
+		// usleep(100);
 	}
-}
-
-void	clean_up_memory(t_philo *philo, t_data *data)
-{
-	free(philo);
-	free(data);
 }
 
 int	main(int ac, char **av)
@@ -48,6 +44,7 @@ int	main(int ac, char **av)
 	{
 		sem_unlink("/forks_sem");
 		sem_unlink("/print_sem");
+		sem_unlink("/last_meal_sem");
 		i = 0;
 		philo.data = &data;
 		data.time_start = ft_ms_cur_time();
@@ -55,23 +52,26 @@ int	main(int ac, char **av)
 		if (!open_forks(&data))
 			return (1);
 		data.pid = malloc(sizeof(pid_t) * data.num_of_philos);
-		start_philos(data);
+		start_philos(data, philo);
 		//waitpid
 		while (1)
 		{
 			waitpid(-1, &exit_status, 0);
 			if (WEXITSTATUS(exit_status) == 5)
 				break;
+			i = 0;
+			while (i < data.num_of_philos)
+			{
+				kill(data.pid[i], SIGTERM);
+				i++;
+			}
 		}
-		i = 0;
-		while(i < data.num_of_philos)
-		{
-			sem_close(data.fork_sem);
-			i++;
-		}
+		sem_close(data.fork_sem);
 		sem_close(data.print_sem);
-		sem_unlink("fork_sem");
-		sem_unlink("print_sem");
+		sem_close(data.last_meal_sem);
+		sem_unlink("/fork_sem");
+		sem_unlink("/print_sem");
+		sem_unlink("/last_meal_sem");
 		// clean_up_memory(&philo, &data);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:51:10 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/20 06:58:11 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/20 12:35:57 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@ int	open_forks(t_data *data)
 	data->print_sem = sem_open("/print_sem", O_CREAT, 0644, 1);
 	if (data->print_sem == SEM_FAILED)
 		return (ft_error("failed to open print semaphore"), 0);
+	data->last_meal_sem = sem_open("/last_meal_sem", O_CREAT, 0644, 1);
+	if (data->last_meal_sem == SEM_FAILED)
+		return(ft_error("failed to open last meal semaphore"), 0);
 	return (1);
 }
-void	start_philos(t_data data)
+void	start_philos(t_data data, t_philo philo)
 {
 	int		i;
-	t_philo	philo;
 
 	i = 0;
 	while (i < data.num_of_philos)

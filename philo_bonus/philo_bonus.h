@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:49:42 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/20 06:51:28 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/20 12:46:07 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
+# include <sys/wait.h>
+# include <signal.h>
 
 typedef struct s_data
 {
@@ -32,6 +34,7 @@ typedef struct s_data
 	pid_t			*pid;
 	sem_t	*fork_sem;
 	sem_t	*print_sem;
+	sem_t	*last_meal_sem;
 }t_data;
 
 typedef struct s_philo
@@ -43,7 +46,7 @@ typedef struct s_philo
 }t_philo;
 
 void		init_philo_data(t_philo *philo, t_data *data, char **av, int ac);
-void		start_philos(t_data data);
+void		start_philos(t_data data, t_philo philo);
 void		routine(t_philo philo);
 int			open_forks(t_data *data);
 void		pickup_forks(int philo_num, t_philo philo);
@@ -55,6 +58,5 @@ long long	ft_ms_cur_time(void);
 void		ft_usleep(long long sleep_dur);
 int			ft_strlen(const char *s);
 void		*alive_or_dead(void *arg);
-void		clean_up_memory(t_philo *philo, t_data *data);
 
 #endif
