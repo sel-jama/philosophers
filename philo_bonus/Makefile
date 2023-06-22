@@ -6,15 +6,15 @@
 #    By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 07:46:18 by sel-jama          #+#    #+#              #
-#    Updated: 2023/06/17 06:52:14 by sel-jama         ###   ########.fr        #
+#    Updated: 2023/06/22 12:31:17 by sel-jama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS_BONUS = init_open.c philo_bonus.c children_philos.c utils_bonus.c
+SRCS_BONUS = init_open.c philo_bonus.c children_philos.c utils_bonus.c check_args.c
 
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread
 
 NAME = philo_bonus
 

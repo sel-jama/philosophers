@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:51:10 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/20 12:35:57 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/22 12:42:41 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,30 @@
 
 void	init_philo_data(t_philo *philo, t_data *data, char **av, int ac)
 {
-	data->num_of_philos = ft_atoi(av[1]);
-	data->time_to_die = ft_atoi(av[2]);
-	data->time_to_eat = ft_atoi(av[3]);
-	data->time_to_sleep = ft_atoi(av[4]);
+	data->num_of_philos = ft_atoll(av[1]);
+	data->time_to_die = ft_atoll(av[2]);
+	data->time_to_eat = ft_atoll(av[3]);
+	data->time_to_sleep = ft_atoll(av[4]);
 	philo->last_meal_time = 0;
 	data->death = 0;
 	if (ac == 6)
-		data->meals = ft_atoi(av[5]);
+		data->meals = ft_atoll(av[5]);
 }
 
 int	open_forks(t_data *data)
 {
-	data->fork_sem = sem_open("/fork_sem", O_CREAT, 0644, data->num_of_philos);
+	data->fork_sem = sem_open("fork_sem", O_CREAT, 0644, data->num_of_philos);
 	if (data->fork_sem == SEM_FAILED)
-			return (ft_error("failed to open fork semaphore"), 0);
-	data->print_sem = sem_open("/print_sem", O_CREAT, 0644, 1);
+		return (ft_error("failed to open fork semaphore"), 0);
+	data->print_sem = sem_open("print_sem", O_CREAT, 0644, 1);
 	if (data->print_sem == SEM_FAILED)
 		return (ft_error("failed to open print semaphore"), 0);
-	data->last_meal_sem = sem_open("/last_meal_sem", O_CREAT, 0644, 1);
-	if (data->last_meal_sem == SEM_FAILED)
-		return(ft_error("failed to open last meal semaphore"), 0);
+	data->last_meal_sem = sem_open("last_meal_sem", O_CREAT, 0644, 1);
+	if (data->print_sem == SEM_FAILED)
+		return (ft_error("failed to open last_meal semaphore"), 0);
 	return (1);
 }
+
 void	start_philos(t_data data, t_philo philo)
 {
 	int		i;
@@ -51,4 +52,3 @@ void	start_philos(t_data data, t_philo philo)
 		i++;
 	}
 }
- 

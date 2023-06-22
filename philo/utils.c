@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 21:08:55 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/17 03:46:03 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:49:40 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	ft_error(char *msg)
 	write(2, msg, ft_strlen(msg));
 }
 
-int	ft_atoi(const char *str)
+long long	ft_atoll(const char *str)
 {
-	int		i;
-	int		sign;
-	int		nb;
-	char	*s;
+	int			i;
+	int			sign;
+	long long	nb;
+	char		*s;
 
 	s = (char *)str;
 	i = 0;

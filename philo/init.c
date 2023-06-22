@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 08:56:32 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/17 06:44:01 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:50:43 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	init_data(t_philo *philo, t_data *data, int num_of_philos)
 
 void	init_philo_data(t_data *data, char **av, int ac)
 {
-	data->num_of_philos = ft_atoi(av[1]);
-	data->time_to_die = ft_atoi(av[2]);
-	data->time_to_eat = ft_atoi(av[3]);
-	data->time_to_sleep = ft_atoi(av[4]);
+	data->num_of_philos = ft_atoll(av[1]);
+	data->time_to_die = ft_atoll(av[2]);
+	data->time_to_eat = ft_atoll(av[3]);
+	data->time_to_sleep = ft_atoll(av[4]);
 	data->death = 0;
 	if (ac == 6)
-		data->meals = ft_atoi(av[5]);
+		data->meals = ft_atoll(av[5]);
 }
 
 int	init_forks(t_data *data)
