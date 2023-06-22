@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 07:19:19 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 12:22:24 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/22 20:04:52 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_death(t_philo *philo, t_data *data)
 		i = 0;
 		while (i < data->num_of_philos)
 		{
-			pthread_mutex_lock(&philo[i].last_meal_mutex);
+			pthread_mutex_lock(&data->last_meal_mutex);
 			if (ft_ms_cur_time() - data->time_start
 				- philo[i].last_meal_time >= data->time_to_die)
 			{
@@ -29,14 +29,18 @@ void	check_death(t_philo *philo, t_data *data)
 				ft_print_case(philo[i].philo_num, &data, "died", 1);
 				return ;
 			}
-			pthread_mutex_unlock(&philo[i].last_meal_mutex);
+			pthread_mutex_unlock(&data->last_meal_mutex);
 			i++;
 		}
+		pthread_mutex_lock(&data->eaten_meals_mutex);
+		if (philo->eaten_meals >= data->num_of_philos * data->must_eat)
+			return ;
+		pthread_mutex_unlock(&data->eaten_meals_mutex);
 	}
 	
 }
 
-void	join_or_destroy(t_data *data, t_philo *philo)
+void	join_or_destroy(t_data *data)
 {
 	int	i;
 
@@ -47,12 +51,8 @@ void	join_or_destroy(t_data *data, t_philo *philo)
 		i++;
 	}
 	pthread_mutex_destroy(&data->print_mutex);
-	i = 0;
-	while (i < data->num_of_philos)
-	{
-		pthread_mutex_destroy(&philo[i].last_meal_mutex);
-		i++;
-	}
+	pthread_mutex_destroy(&data->last_meal_mutex);
+	pthread_mutex_destroy(&data->eaten_meals_mutex);
 }
 
 void	clean_up_memory(t_philo *philo, t_data *data)
@@ -83,6 +83,6 @@ int	main(int ac, char **av)
 		i++;
 	}
 	check_death(philo, data);
-	join_or_destroy(data, philo);
+	join_or_destroy(data);
 	clean_up_memory(philo, data);
 }

@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:48:18 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 12:48:12 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:33:09 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ void	routine(t_philo philo)
 	int		philo_id;
 
 	philo_id = philo.philo_num;
-	pthread_create(&philo.id, NULL, alive_or_dead, &philo);
 	if (philo_id % 2 == 0)
-		usleep(philo.data->time_to_eat);
+		ft_usleep(philo.data->time_to_eat);
+	// sem_post(philo.data->last_meal_sem);
+	pthread_create(&philo.id, NULL, alive_or_dead, &philo);
 	while (1)
 	{
 		pickup_forks(philo_id, philo);
-		philo.last_meal_time = ft_ms_cur_time() - philo.data->time_start;
+		// philo.last_meal_time = ft_ms_cur_time() - philo.data->time_start;
+		gettimeofday(&philo.data->last_meal_s, NULL);
 		ft_print_case(philo_id, philo.data, "is eating", 0);
 		ft_usleep(philo.data->time_to_eat);
 		putdown_forks(philo);

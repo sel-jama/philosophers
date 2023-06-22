@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 08:35:43 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 11:48:53 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/22 19:55:35 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,29 @@
 
 typedef struct s_data
 {
+	int 			ac;
 	int				num_of_philos;
 	int				time_to_die;
 	int				time_to_sleep;
 	int				time_to_eat;
-	int				meals;
+	int				must_eat;
 	int				*fork_position;
 	int				death;
 	long long		time_start;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	last_meal_mutex;
+	pthread_mutex_t	eaten_meals_mutex;
 }t_data;
 
 typedef struct s_philo
 {
 	int				philo_num;
 	pthread_t		id;
+	int				eaten_meals;
 	int				l_fork;
 	int				r_fork;
 	long long		last_meal_time;
-	pthread_mutex_t	last_meal_mutex;
 	t_data			*data;
 }t_philo;
 
@@ -57,7 +60,7 @@ long long	ft_ms_cur_time(void);
 void		ft_usleep(long long sleep_dur);
 int			ft_strlen(const char *s);
 void		check_death(t_philo *philo, t_data *data);
-void		join_or_destroy(t_data *data, t_philo *philo);
+void		join_or_destroy(t_data *data);
 void		clean_up_memory(t_philo *philo, t_data *data);
 int			ft_check_args(int ac, char **av);
 

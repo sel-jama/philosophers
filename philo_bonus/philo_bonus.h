@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:49:42 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 12:41:43 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:34:22 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_data
 	sem_t		*fork_sem;
 	sem_t		*print_sem;
 	sem_t		*last_meal_sem;
+	struct timeval last_meal_s;
 }t_data;
 
 typedef struct s_philo

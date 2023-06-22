@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:49:14 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 13:42:56 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:44:47 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,20 @@ void	*alive_or_dead(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	// if (!philo->last_meal_time)
 	while (1)
 	{
+		usleep(100);
 		sem_wait(philo->data->last_meal_sem);
-		if (ft_ms_cur_time() - philo->data->time_start
-			- philo->last_meal_time > philo->data->time_to_die)
+		philo->last_meal_time = philo->data->last_meal_s.tv_sec * 1000 + philo->data->last_meal_s.tv_usec / 1000;
+		if (ft_ms_cur_time() - philo->last_meal_time > philo->data->time_to_die)
 		{
 			philo->data->death = 1;
 			ft_print_case(philo->philo_num, philo->data, "died", 1);
-			sem_post(philo->data->last_meal_sem);
 			exit(3);
 		}
 		sem_post(philo->data->last_meal_sem);
-		usleep(100);
+		// usleep(100);
 	}
 }
 

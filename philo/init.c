@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 08:56:32 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 11:50:43 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/22 19:52:54 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_data(t_philo *philo, t_data *data, int num_of_philos)
 		philo[i].philo_num = i + 1;
 		philo[i].data = data;
 		philo[i].last_meal_time = 0;
-		pthread_mutex_init(&philo[i].last_meal_mutex, NULL);
+		philo[i].eaten_meals = 0;
 		philo[i].r_fork = (philo[i].philo_num) % num_of_philos;
 		philo[i].l_fork = (philo[i].philo_num - 1) % num_of_philos;
 		i++;
@@ -35,9 +35,14 @@ void	init_philo_data(t_data *data, char **av, int ac)
 	data->time_to_die = ft_atoll(av[2]);
 	data->time_to_eat = ft_atoll(av[3]);
 	data->time_to_sleep = ft_atoll(av[4]);
+	data->ac = ac;
+	pthread_mutex_init(&data->last_meal_mutex, NULL);
 	data->death = 0;
 	if (ac == 6)
-		data->meals = ft_atoll(av[5]);
+	{
+		data->must_eat = ft_atoll(av[5]);
+		pthread_mutex_init(&data->eaten_meals_mutex, NULL);
+	}
 }
 
 int	init_forks(t_data *data)
