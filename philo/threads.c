@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 03:58:37 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/23 15:07:22 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:07:47 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*philosopher_routine(void *arg)
 		philo->last_meal_time = ft_ms_cur_time() - data->time_start;
 		pthread_mutex_unlock(&data->last_meal_mutex);
 		ft_print_case(philo_id, &data, "is eating", 0);
-		eaten_meals_check(philo->data);
+		eaten_meals_check(philo);
 		ft_usleep(data->time_to_eat);
 		putdown_forks(philo);
 		ft_print_case(philo_id, &data, "is sleeping", 0);

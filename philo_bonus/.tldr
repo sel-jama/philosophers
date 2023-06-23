@@ -65,9 +65,9 @@
     {
       "id": "pointer:pointer",
       "typeName": "pointer",
-      "x": 818.6286784685306,
-      "y": 3599.074940050041,
-      "lastActivityTimestamp": 1687531243426
+      "x": -375.4810758059175,
+      "y": 1814.8641254668885,
+      "lastActivityTimestamp": 1687532066948
     },
     {
       "id": "page:vxanB6BZmniQ4HIXGxe2J",
@@ -79,7 +79,7 @@
       "followingUserId": null,
       "propsForNextShape": {
         "opacity": "1",
-        "color": "light-blue",
+        "color": "light-red",
         "labelColor": "black",
         "dash": "draw",
         "fill": "none",
@@ -96,7 +96,7 @@
       "brush": null,
       "scribble": null,
       "cursor": {
-        "type": "cross",
+        "type": "default",
         "color": "black",
         "rotation": 0
       },
@@ -107,7 +107,7 @@
       "screenBounds": {
         "x": 0,
         "y": 0,
-        "w": 990.0000610351562,
+        "w": 1249.2000732421875,
         "h": 1200
       },
       "zoomBrush": null,
@@ -143,9 +143,9 @@
       "typeName": "page"
     },
     {
-      "x": 751.4088804096509,
-      "y": -1901.8400952421264,
-      "z": 0.4203363052617893,
+      "x": 2565.911250393082,
+      "y": -1315.1893711822966,
+      "z": 0.21402047458825452,
       "id": "camera:page:8vs-HoyypS0N0HDD0xxug",
       "typeName": "camera"
     },
@@ -54438,7 +54438,6 @@
       "y": 3000.424772876538,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:9fnSods7aCSRl_HpImGOw",
       "type": "draw",
       "props": {
         "segments": [
@@ -55344,6 +55343,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0e",
+      "id": "shape:9fnSods7aCSRl_HpImGOw",
       "typeName": "shape"
     },
     {
@@ -55351,7 +55351,6 @@
       "y": 2793.425286215798,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:NKiSUBsBhcZgb8qQcuDUj",
       "type": "draw",
       "props": {
         "segments": [
@@ -55722,6 +55721,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0f",
+      "id": "shape:NKiSUBsBhcZgb8qQcuDUj",
       "typeName": "shape"
     },
     {
@@ -55729,7 +55729,6 @@
       "y": 3129.5624403121246,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:T1_2JUaGj796bttg4jVY-",
       "type": "draw",
       "props": {
         "segments": [
@@ -56045,6 +56044,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0g",
+      "id": "shape:T1_2JUaGj796bttg4jVY-",
       "typeName": "shape"
     },
     {
@@ -56052,7 +56052,6 @@
       "y": 3922.0975662361543,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:hwHybGJe47uwMyUdVk-f3",
       "type": "draw",
       "props": {
         "segments": [
@@ -56333,6 +56332,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0h",
+      "id": "shape:hwHybGJe47uwMyUdVk-f3",
       "typeName": "shape"
     },
     {
@@ -56340,7 +56340,6 @@
       "y": 3940.364131578769,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:O7uRxEUsudC_4D5WnCpmA",
       "type": "draw",
       "props": {
         "segments": [
@@ -56596,6 +56595,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0i",
+      "id": "shape:O7uRxEUsudC_4D5WnCpmA",
       "typeName": "shape"
     },
     {
@@ -56603,7 +56603,6 @@
       "y": 3222.479168953344,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:IDh9AnSXthf60FDOfUf3g",
       "type": "draw",
       "props": {
         "segments": [
@@ -56844,6 +56843,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0j",
+      "id": "shape:IDh9AnSXthf60FDOfUf3g",
       "typeName": "shape"
     },
     {
@@ -56851,7 +56851,6 @@
       "y": 3576.235997753313,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:1HUZlRuprF4aFPQoVDFE2",
       "type": "draw",
       "props": {
         "segments": [
@@ -56927,6 +56926,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0k",
+      "id": "shape:1HUZlRuprF4aFPQoVDFE2",
       "typeName": "shape"
     },
     {
@@ -56934,7 +56934,6 @@
       "y": 3056.3175035362233,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:JY3yBhkETwrVpjHzbQq8V",
       "type": "draw",
       "props": {
         "segments": [
@@ -57015,6 +57014,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0l",
+      "id": "shape:JY3yBhkETwrVpjHzbQq8V",
       "typeName": "shape"
     },
     {
@@ -57022,7 +57022,6 @@
       "y": 2978.7456597557443,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:IAUFOwaZoeQyLSTeMk91e",
       "type": "draw",
       "props": {
         "segments": [
@@ -57108,6 +57107,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0m",
+      "id": "shape:IAUFOwaZoeQyLSTeMk91e",
       "typeName": "shape"
     },
     {
@@ -57115,7 +57115,6 @@
       "y": 3479.81763774087,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:r1ptrcrT457NkMck1V3Hh",
       "type": "draw",
       "props": {
         "segments": [
@@ -57211,6 +57210,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0n",
+      "id": "shape:r1ptrcrT457NkMck1V3Hh",
       "typeName": "shape"
     },
     {
@@ -57218,7 +57218,6 @@
       "y": 3778.3510607746084,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:A1WbNexAwdFUs3eIUEJ6n",
       "type": "draw",
       "props": {
         "segments": [
@@ -57344,6 +57343,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0o",
+      "id": "shape:A1WbNexAwdFUs3eIUEJ6n",
       "typeName": "shape"
     },
     {
@@ -57351,7 +57351,6 @@
       "y": 4073.204249634444,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:EBD8klmLejIa3Pg0ZTSgA",
       "type": "draw",
       "props": {
         "segments": [
@@ -57432,6 +57431,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0p",
+      "id": "shape:EBD8klmLejIa3Pg0ZTSgA",
       "typeName": "shape"
     },
     {
@@ -57439,7 +57439,6 @@
       "y": 3255.020018779339,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:_vSb_zIlMzVx08-3wWk88",
       "type": "draw",
       "props": {
         "segments": [
@@ -57530,6 +57529,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0q",
+      "id": "shape:_vSb_zIlMzVx08-3wWk88",
       "typeName": "shape"
     },
     {
@@ -57537,7 +57537,6 @@
       "y": 3227.408170690693,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:ldVEfE8zrVifju6UExS_2",
       "type": "draw",
       "props": {
         "segments": [
@@ -57683,6 +57682,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0r",
+      "id": "shape:ldVEfE8zrVifju6UExS_2",
       "typeName": "shape"
     },
     {
@@ -57690,7 +57690,6 @@
       "y": 2629.315665357588,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:j9dSSYIdeFBjOPFj9fKBR",
       "type": "draw",
       "props": {
         "segments": [
@@ -57841,6 +57840,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0s",
+      "id": "shape:j9dSSYIdeFBjOPFj9fKBR",
       "typeName": "shape"
     },
     {
@@ -57848,7 +57848,6 @@
       "y": 2960.43444371246,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:ovV4B8nEzh3z0Hru0FVbD",
       "type": "draw",
       "props": {
         "segments": [
@@ -57984,6 +57983,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0t",
+      "id": "shape:ovV4B8nEzh3z0Hru0FVbD",
       "typeName": "shape"
     },
     {
@@ -57991,7 +57991,6 @@
       "y": 3923.4134187547543,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:WCXg3aEmjOMcd_IQ7jf3R",
       "type": "draw",
       "props": {
         "segments": [
@@ -58302,6 +58301,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0u",
+      "id": "shape:WCXg3aEmjOMcd_IQ7jf3R",
       "typeName": "shape"
     },
     {
@@ -58309,7 +58309,6 @@
       "y": 3202.31665499725,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:bwBXclc-VyA-Re-UI__7j",
       "type": "draw",
       "props": {
         "segments": [
@@ -58405,6 +58404,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0v",
+      "id": "shape:bwBXclc-VyA-Re-UI__7j",
       "typeName": "shape"
     },
     {
@@ -58412,7 +58412,6 @@
       "y": 3902.8049786140855,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:s1QlLwDTRmCSEllknVUNW",
       "type": "draw",
       "props": {
         "segments": [
@@ -58493,14 +58492,14 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0w",
+      "id": "shape:s1QlLwDTRmCSEllknVUNW",
       "typeName": "shape"
     },
     {
-      "x": 1184.7194102460269,
-      "y": 3312.072578614958,
+      "x": 1208.3520152005556,
+      "y": 3360.93610071289,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:tpB5PI_P1Bb2KrkpE301t",
       "type": "draw",
       "props": {
         "segments": [
@@ -58695,7 +58694,7 @@
             ]
           }
         ],
-        "color": "red",
+        "color": "light-red",
         "fill": "none",
         "dash": "draw",
         "size": "m",
@@ -58706,6 +58705,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0x",
+      "id": "shape:tpB5PI_P1Bb2KrkpE301t",
       "typeName": "shape"
     },
     {
@@ -58713,7 +58713,6 @@
       "y": 2894.4381670257762,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:Eq7L7S8MishzHO4MFu1gW",
       "type": "draw",
       "props": {
         "segments": [
@@ -58944,6 +58943,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0y",
+      "id": "shape:Eq7L7S8MishzHO4MFu1gW",
       "typeName": "shape"
     },
     {
@@ -58951,7 +58951,6 @@
       "y": 3047.864436173168,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:4e9XB5cLMypsjmnOGXDRX",
       "type": "draw",
       "props": {
         "segments": [
@@ -59162,6 +59161,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b0z",
+      "id": "shape:4e9XB5cLMypsjmnOGXDRX",
       "typeName": "shape"
     },
     {
@@ -59169,7 +59169,6 @@
       "y": 3542.6691256478625,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:5SywKcwN2aLUtljUvQZX7",
       "type": "draw",
       "props": {
         "segments": [
@@ -59580,6 +59579,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b10",
+      "id": "shape:5SywKcwN2aLUtljUvQZX7",
       "typeName": "shape"
     },
     {
@@ -59587,7 +59587,6 @@
       "y": 2991.124140831176,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:7aOLrqb2pmelX-Ts-Y8oW",
       "type": "draw",
       "props": {
         "segments": [
@@ -59863,6 +59862,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b11",
+      "id": "shape:7aOLrqb2pmelX-Ts-Y8oW",
       "typeName": "shape"
     },
     {
@@ -59870,7 +59870,6 @@
       "y": 3434.2961395039065,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:tM5YLFjY0jKdaDVWRSy9G",
       "type": "draw",
       "props": {
         "segments": [
@@ -60276,6 +60275,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b12",
+      "id": "shape:tM5YLFjY0jKdaDVWRSy9G",
       "typeName": "shape"
     },
     {
@@ -60283,7 +60283,6 @@
       "y": 2994.1351227143896,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:lNm66Y-GP2Gk8ntFQaGKt",
       "type": "draw",
       "props": {
         "segments": [
@@ -60334,6 +60333,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b13",
+      "id": "shape:lNm66Y-GP2Gk8ntFQaGKt",
       "typeName": "shape"
     },
     {
@@ -60341,7 +60341,6 @@
       "y": 3469.424261474727,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:J-fvTuVhCJxHRfvcbW-4W",
       "type": "draw",
       "props": {
         "segments": [
@@ -60562,6 +60561,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b14",
+      "id": "shape:J-fvTuVhCJxHRfvcbW-4W",
       "typeName": "shape"
     },
     {
@@ -60569,7 +60569,6 @@
       "y": 2970.0696293004016,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:T34FqbC0Y_OU1PPbMUF44",
       "type": "draw",
       "props": {
         "segments": [
@@ -60645,6 +60644,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b15",
+      "id": "shape:T34FqbC0Y_OU1PPbMUF44",
       "typeName": "shape"
     },
     {
@@ -60652,7 +60652,6 @@
       "y": 3057.521910810062,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:mU46NN-Vi1d5Oejgo43fo",
       "type": "draw",
       "props": {
         "segments": [
@@ -60713,6 +60712,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b16",
+      "id": "shape:mU46NN-Vi1d5Oejgo43fo",
       "typeName": "shape"
     },
     {
@@ -60720,7 +60720,6 @@
       "y": 3560.66807719752,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:fTJmMcZx67raVCiJNA_UF",
       "type": "draw",
       "props": {
         "segments": [
@@ -60791,6 +60790,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b17",
+      "id": "shape:fTJmMcZx67raVCiJNA_UF",
       "typeName": "shape"
     },
     {
@@ -60798,7 +60798,6 @@
       "y": 3537.2940525204076,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:N-5rH-IGL3BUab5Npb3cs",
       "type": "draw",
       "props": {
         "segments": [
@@ -61054,6 +61053,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b18",
+      "id": "shape:N-5rH-IGL3BUab5Npb3cs",
       "typeName": "shape"
     },
     {
@@ -61061,7 +61061,6 @@
       "y": 3781.116645311051,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:C3nHpT5nNjaU9wB0XNmT-",
       "type": "draw",
       "props": {
         "segments": [
@@ -61347,6 +61346,7 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b19",
+      "id": "shape:C3nHpT5nNjaU9wB0XNmT-",
       "typeName": "shape"
     },
     {
@@ -61354,7 +61354,6 @@
       "y": 3771.793724216737,
       "rotation": 0,
       "isLocked": false,
-      "id": "shape:LkyNVnZH9wvIbKKbFbvkN",
       "type": "draw",
       "props": {
         "segments": [
@@ -61515,6 +61514,100 @@
       },
       "parentId": "page:8vs-HoyypS0N0HDD0xxug",
       "index": "b1A",
+      "id": "shape:LkyNVnZH9wvIbKKbFbvkN",
+      "typeName": "shape"
+    },
+    {
+      "x": 761.7099981321555,
+      "y": 3556.965771782961,
+      "rotation": 0,
+      "isLocked": false,
+      "type": "draw",
+      "props": {
+        "segments": [
+          {
+            "type": "free",
+            "points": [
+              {
+                "x": 0,
+                "y": 0,
+                "z": 0.5
+              },
+              {
+                "x": 3.97,
+                "y": 3,
+                "z": 0.5
+              },
+              {
+                "x": 16.44,
+                "y": 21.66,
+                "z": 0.5
+              },
+              {
+                "x": 22.2,
+                "y": 31.63,
+                "z": 0.5
+              },
+              {
+                "x": 27.79,
+                "y": 39.03,
+                "z": 0.5
+              },
+              {
+                "x": 31.1,
+                "y": 42.34,
+                "z": 0.5
+              },
+              {
+                "x": 31.79,
+                "y": 43.03,
+                "z": 0.5
+              },
+              {
+                "x": 32.49,
+                "y": 43.03,
+                "z": 0.5
+              },
+              {
+                "x": 34.69,
+                "y": 42.27,
+                "z": 0.5
+              },
+              {
+                "x": 36.32,
+                "y": 39.8,
+                "z": 0.5
+              },
+              {
+                "x": 37.14,
+                "y": 37.34,
+                "z": 0.5
+              },
+              {
+                "x": 37.14,
+                "y": 35.93,
+                "z": 0.5
+              },
+              {
+                "x": 37.14,
+                "y": 34.4,
+                "z": 0.5
+              }
+            ]
+          }
+        ],
+        "color": "light-blue",
+        "fill": "none",
+        "dash": "draw",
+        "size": "m",
+        "opacity": "1",
+        "isComplete": true,
+        "isClosed": false,
+        "isPen": false
+      },
+      "parentId": "page:8vs-HoyypS0N0HDD0xxug",
+      "index": "b1B",
+      "id": "shape:8a7hIJpwm3Z9AjeGm-5wO",
       "typeName": "shape"
     }
   ]

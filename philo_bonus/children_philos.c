@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:48:18 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/23 15:43:01 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:54:19 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	routine(t_philo philo)
 	philo_id = philo.philo_num;
 	if (philo_id % 2 == 0)
 		ft_usleep(philo.data->time_to_eat);
+	if (philo_id == 1)
+		ft_usleep(10);
 	pthread_create(&philo.id, NULL, alive_or_dead, &philo);
 	while (1)
 	{

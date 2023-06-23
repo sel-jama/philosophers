@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 08:56:32 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 22:53:59 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:40:26 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@ void	init_data(t_philo *philo, t_data *data, int num_of_philos)
 		philo[i].last_meal_time = 0;
 		philo[i].r_fork = (philo[i].philo_num) % num_of_philos;
 		philo[i].l_fork = (philo[i].philo_num - 1) % num_of_philos;
+		philo[i].meals_count = data->must_eat;
 		i++;
 	}
 }
 
-void	init_philo_data(t_data *data, char **av, int ac)
+int	init_philo_data(t_data *data, char **av, int ac)
 {
 	data->num_of_philos = ft_atoll(av[1]);
+	if (data->num_of_philos == 0)
+		return (0);
 	data->time_to_die = ft_atoll(av[2]);
 	data->time_to_eat = ft_atoll(av[3]);
 	data->time_to_sleep = ft_atoll(av[4]);
@@ -42,9 +45,12 @@ void	init_philo_data(t_data *data, char **av, int ac)
 	{
 		data->eaten_meals = 0;
 		data->must_eat = ft_atoll(av[5]);
+		if (data->must_eat == 0)
+			return (0);
 		if (pthread_mutex_init(&data->eaten_meals_mutex, NULL))
 			ft_error("failed to initialize mutex");
 	}
+	return (1);
 }
 
 int	init_forks(t_data *data)

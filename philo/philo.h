@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 08:35:43 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/23 15:23:26 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:51:17 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,15 @@ typedef struct s_philo
 {
 	int				philo_num;
 	pthread_t		id;
+	int				meals_count;
 	int				l_fork;
 	int				r_fork;
 	long long		last_meal_time;
 	t_data			*data;
-}t_philo;
+}					t_philo;
 
 void		init_data(t_philo *philo, t_data *data, int num_of_philos);
-void		init_philo_data(t_data *data, char **av, int ac);
+int			init_philo_data(t_data *data, char **av, int ac);
 int			init_forks(t_data *data);
 void		*philosopher_routine(void *philo);
 void		pickup_forks(int philo_num, t_philo *philo);
@@ -63,7 +64,8 @@ void		check_death(t_philo *philo, t_data *data);
 void		join_or_destroy(t_data *data);
 void		clean_up_memory(t_philo *philo, t_data *data);
 int			ft_check_args(int ac, char **av);
-void		eaten_meals_check(t_data *data);
+void		eaten_meals_check(t_philo *philo);
 void		philosopher_status(t_data *data);
+int			check_args(char **av);
 
 #endif
