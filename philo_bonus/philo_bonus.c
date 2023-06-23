@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:49:14 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 17:44:47 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:16:35 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,18 @@ void	*alive_or_dead(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	// if (!philo->last_meal_time)
 	while (1)
 	{
-		usleep(100);
+		usleep(1000);
 		sem_wait(philo->data->last_meal_sem);
 		philo->last_meal_time = philo->data->last_meal_s.tv_sec * 1000 + philo->data->last_meal_s.tv_usec / 1000;
-		if (ft_ms_cur_time() - philo->last_meal_time > philo->data->time_to_die)
+		if (ft_ms_cur_time() - philo->last_meal_time >= philo->data->time_to_die)
 		{
 			philo->data->death = 1;
 			ft_print_case(philo->philo_num, philo->data, "died", 1);
-			exit(3);
+			exit(5);
 		}
 		sem_post(philo->data->last_meal_sem);
-		// usleep(100);
 	}
 }
 
@@ -40,12 +38,13 @@ int	main(int ac, char **av)
 	t_philo	philo;
 	int		i;
 	int		status;
+	int children_exited = 0;
 
 	
 	sem_unlink("fork_sem");
 	sem_unlink("print_sem");
 	sem_unlink("last_meal_sem");
-		// sem_unlink("/last_meal_sem");
+	sem_unlink("eaten_meals_sem");
 	i = 0;
 	if (!ft_check_args(ac, av))
 		return (1);
@@ -59,9 +58,13 @@ int	main(int ac, char **av)
 	while (1)
 	{
 		waitpid(-1, &status, 0);
-		if (WIFEXITED(status))
+		if (WIFEXITED(status) && WEXITSTATUS(status) == 5)
 			break ;
-	}
+		if (WIFEXITED(status) && WEXITSTATUS(status) == 10)
+            	children_exited++;
+		if (children_exited >= data.num_of_philos)
+			return(EXIT_SUCCESS);
+    }
 	i = 0;
 	while (i < data.num_of_philos)
 	{
@@ -71,5 +74,6 @@ int	main(int ac, char **av)
 	sem_close(data.fork_sem);
 	sem_close(data.print_sem);
 	sem_close(data.last_meal_sem);
+	sem_close(data.eaten_meals_sem);
 	return (EXIT_SUCCESS);
 }

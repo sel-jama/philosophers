@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 03:58:37 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 19:57:25 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/22 23:18:05 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*philosopher_routine(void *arg)
 		if (data->ac == 6)
 		{
 			pthread_mutex_lock(&data->eaten_meals_mutex);
-			philo->eaten_meals += 1;
+			data->eaten_meals += 1;
 			pthread_mutex_unlock(&data->eaten_meals_mutex);
 		}
 		ft_usleep(data->time_to_eat);

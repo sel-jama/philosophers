@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:49:42 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 17:34:22 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 00:19:47 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,16 @@ typedef struct s_data
 	int			time_to_die;
 	int			time_to_sleep;
 	int			time_to_eat;
-	int			meals;
+	int			must_eat;
 	int			death;
+	int			ac;
+	int			meals_value;
 	long long	time_start;
 	pid_t		*pid;
 	sem_t		*fork_sem;
 	sem_t		*print_sem;
 	sem_t		*last_meal_sem;
+	sem_t		*eaten_meals_sem;
 	struct timeval last_meal_s;
 }t_data;
 

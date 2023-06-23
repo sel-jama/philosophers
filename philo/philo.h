@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 08:35:43 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 19:55:35 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/22 22:52:58 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_data
 	int				must_eat;
 	int				*fork_position;
 	int				death;
+	int				eaten_meals;
 	long long		time_start;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_mutex;
@@ -40,7 +41,6 @@ typedef struct s_philo
 {
 	int				philo_num;
 	pthread_t		id;
-	int				eaten_meals;
 	int				l_fork;
 	int				r_fork;
 	long long		last_meal_time;

@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:51:10 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 16:38:36 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 11:56:02 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ void	init_philo_data(t_philo *philo, t_data *data, char **av, int ac)
 	data->time_to_sleep = ft_atoll(av[4]);
 	philo->last_meal_time = 0;
 	data->death = 0;
+	data->ac = ac;
 	if (ac == 6)
-		data->meals = ft_atoll(av[5]);
+		data->must_eat = ft_atoll(av[5]);
+	else
+		data->must_eat = 0;
 }
 
 int	open_forks(t_data *data)
@@ -34,7 +37,13 @@ int	open_forks(t_data *data)
 		return (ft_error("failed to open print semaphore"), 0);
 	data->last_meal_sem = sem_open("last_meal_sem", O_CREAT, 0644, 1);
 	if (data->print_sem == SEM_FAILED)
-		return (ft_error("failed to open last_meal semaphore"), 0);
+		return(ft_error("failed to open last_meal semaphore"), 0);
+	if (data->ac == 6)
+	{
+		data->eaten_meals_sem = sem_open("eaten_meals_sem", O_CREAT, 0644, 1);
+		if (data->eaten_meals_sem == SEM_FAILED)
+			ft_error("failed to open eaten_meals semaphore");
+	}
 	return (1);
 }
 

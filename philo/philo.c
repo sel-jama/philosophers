@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 07:19:19 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 20:04:52 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/22 23:35:48 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,13 @@ void	check_death(t_philo *philo, t_data *data)
 			pthread_mutex_unlock(&data->last_meal_mutex);
 			i++;
 		}
-		pthread_mutex_lock(&data->eaten_meals_mutex);
-		if (philo->eaten_meals >= data->num_of_philos * data->must_eat)
-			return ;
-		pthread_mutex_unlock(&data->eaten_meals_mutex);
+		if (data->ac == 6)
+		{
+			pthread_mutex_lock(&data->eaten_meals_mutex);
+			if (data->eaten_meals >= data->num_of_philos * data->must_eat)
+				return ;
+			pthread_mutex_unlock(&data->eaten_meals_mutex);
+		}
 	}
 	
 }
@@ -52,7 +55,8 @@ void	join_or_destroy(t_data *data)
 	}
 	pthread_mutex_destroy(&data->print_mutex);
 	pthread_mutex_destroy(&data->last_meal_mutex);
-	pthread_mutex_destroy(&data->eaten_meals_mutex);
+	if (data->ac == 6)
+		pthread_mutex_destroy(&data->eaten_meals_mutex);
 }
 
 void	clean_up_memory(t_philo *philo, t_data *data)
