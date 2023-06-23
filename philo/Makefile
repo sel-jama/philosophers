@@ -6,11 +6,11 @@
 #    By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 07:46:18 by sel-jama          #+#    #+#              #
-#    Updated: 2023/06/22 23:29:58 by sel-jama         ###   ########.fr        #
+#    Updated: 2023/06/23 14:49:13 by sel-jama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = init.c philo.c treads.c utils.c check_args.c
+SRCS = init.c philo.c threads.c utils.c check_args.c
 
 OBJS = ${SRCS:.c=.o}
 

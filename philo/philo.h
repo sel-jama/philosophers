@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 08:35:43 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 22:52:58 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:23:26 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct s_data
 {
-	int 			ac;
+	int				ac;
 	int				num_of_philos;
 	int				time_to_die;
 	int				time_to_sleep;
@@ -63,5 +63,7 @@ void		check_death(t_philo *philo, t_data *data);
 void		join_or_destroy(t_data *data);
 void		clean_up_memory(t_philo *philo, t_data *data);
 int			ft_check_args(int ac, char **av);
+void		eaten_meals_check(t_data *data);
+void		philosopher_status(t_data *data);
 
 #endif

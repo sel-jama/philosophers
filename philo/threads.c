@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treads.c                                           :+:      :+:    :+:   */
+/*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 03:58:37 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 23:18:05 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:07:22 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,7 @@ void	*philosopher_routine(void *arg)
 		philo->last_meal_time = ft_ms_cur_time() - data->time_start;
 		pthread_mutex_unlock(&data->last_meal_mutex);
 		ft_print_case(philo_id, &data, "is eating", 0);
-		if (data->ac == 6)
-		{
-			pthread_mutex_lock(&data->eaten_meals_mutex);
-			data->eaten_meals += 1;
-			pthread_mutex_unlock(&data->eaten_meals_mutex);
-		}
+		eaten_meals_check(philo->data);
 		ft_usleep(data->time_to_eat);
 		putdown_forks(philo);
 		ft_print_case(philo_id, &data, "is sleeping", 0);
@@ -76,4 +71,3 @@ long long	ft_ms_cur_time(void)
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000LL) + (tv.tv_usec / 1000LL));
 }
- 

@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 06:26:27 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 11:59:33 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 14:32:57 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_check_int(char **av)
 	return (1);
 }
 
-int ft_check_empty(char **av)
+int	ft_check_empty(char **av)
 {
 	int	i;
 	int	j;
@@ -55,13 +55,17 @@ int ft_check_empty(char **av)
 		return (0);
 	return (1);
 }
-int ft_check_args(int ac, char **av)
+
+int	ft_check_args(int ac, char **av)
 {
-    if (ac != 5 && ac != 6)
-            return (printf("Please pass the allowed number of arguments. "), 0);
-    if (!ft_check_empty(av))
-        return (printf("Invalid argument provided ."), 0);
-    if (!ft_check_int(av))
-        return (printf("Please enter a positive integer within the valid range. ") ,0);
-    return (1);
+	if (ac != 5 && ac != 6)
+		return (printf("Please pass the allowed number of arguments. "), 0);
+	if (!ft_check_empty(av))
+		return (printf("Invalid argument provided ."), 0);
+	if (!ft_check_int(av))
+	{
+		printf("Please enter a positive integer within the valid range. ");
+		return (0);
+	}
+	return (1);
 }

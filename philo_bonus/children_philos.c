@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:48:18 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/23 12:18:32 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:43:01 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,12 @@ void	routine(t_philo philo)
 		if (philo.data->ac == 6 && philo.data->must_eat <= 0)
 			exit(10);
 		pickup_forks(philo_id, philo);
-		// philo.last_meal_time = ft_ms_cur_time() - philo.data->time_start;
 		ft_print_case(philo_id, philo.data, "is eating", 0);
 		sem_wait(philo.data->last_meal_sem);
 		gettimeofday(&philo.data->last_meal_s, NULL);
 		sem_post(philo.data->last_meal_sem);
-		if(philo.data->must_eat > 0)
-		{
-			// sem_wait(philo.data->eaten_meals_sem);
+		if (philo.data->must_eat > 0)
 			philo.data->must_eat -= 1;
-			// sem_post(philo.data->eaten_meals_sem);
-		}
 		ft_usleep(philo.data->time_to_eat);
 		putdown_forks(philo);
 		ft_print_case(philo_id, philo.data, "is sleeping", 0);

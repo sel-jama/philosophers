@@ -6,11 +6,21 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 07:19:19 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/22 23:35:48 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:11:06 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	eaten_meals_check(t_data *data)
+{
+	if (data->ac == 6)
+	{
+		pthread_mutex_lock(&data->eaten_meals_mutex);
+		data->eaten_meals += 1;
+		pthread_mutex_unlock(&data->eaten_meals_mutex);
+	}
+}
 
 void	check_death(t_philo *philo, t_data *data)
 {
@@ -18,8 +28,8 @@ void	check_death(t_philo *philo, t_data *data)
 
 	while (1)
 	{
-		i = 0;
-		while (i < data->num_of_philos)
+		i = -1;
+		while (++i < data->num_of_philos)
 		{
 			pthread_mutex_lock(&data->last_meal_mutex);
 			if (ft_ms_cur_time() - data->time_start
@@ -30,7 +40,6 @@ void	check_death(t_philo *philo, t_data *data)
 				return ;
 			}
 			pthread_mutex_unlock(&data->last_meal_mutex);
-			i++;
 		}
 		if (data->ac == 6)
 		{
@@ -39,8 +48,7 @@ void	check_death(t_philo *philo, t_data *data)
 				return ;
 			pthread_mutex_unlock(&data->eaten_meals_mutex);
 		}
-	}
-	
+	}	
 }
 
 void	join_or_destroy(t_data *data)
@@ -83,7 +91,7 @@ int	main(int ac, char **av)
 		return (0);
 	while (i < data->num_of_philos)
 	{
-			pthread_create(&philo[i].id, NULL, philosopher_routine, &philo[i]);
+		pthread_create(&philo[i].id, NULL, philosopher_routine, &philo[i]);
 		i++;
 	}
 	check_death(philo, data);
