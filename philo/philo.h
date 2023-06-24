@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 08:35:43 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/23 20:51:17 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 22:56:45 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ void		clean_up_memory(t_philo *philo, t_data *data);
 int			ft_check_args(int ac, char **av);
 void		eaten_meals_check(t_philo *philo);
 void		philosopher_status(t_data *data);
-int			check_args(char **av);
+int			ft_check_double_sign(char **av);
 
 #endif

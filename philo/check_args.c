@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 06:26:27 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/23 20:51:49 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 23:02:35 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_check_empty(char **av)
 	return (1);
 }
 
-int	check_args(char **av)
+int	ft_check_double_sign(char **av)
 {
 	int		a;
 	int		b;
@@ -92,7 +92,7 @@ int	ft_check_args(int ac, char **av)
 		printf("Please enter a positive integer within the valid range. ");
 		return (0);
 	}
-	if (!check_args(av))
+	if (!ft_check_double_sign(av))
 		return (printf("Invalid input ."), 0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:49:14 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/23 15:38:17 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 23:26:32 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*alive_or_dead(void *arg)
 	philo = (t_philo *)arg;
 	while (1)
 	{
-		usleep(1000);
+		ft_usleep(1000);
 		sem_wait(philo->data->last_meal_sem);
 		philo->last_meal_time = philo->data->last_meal_s.tv_sec * 1000
 			+ philo->data->last_meal_s.tv_usec / 1000;
@@ -85,5 +85,5 @@ int	main(int ac, char **av)
 	sem_close(data.print_sem);
 	sem_close(data.last_meal_sem);
 	sem_close(data.eaten_meals_sem);
-	return (EXIT_SUCCESS);
+	return (0);
 }

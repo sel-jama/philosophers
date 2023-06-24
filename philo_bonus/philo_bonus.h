@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:49:42 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/23 15:36:52 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 22:58:17 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ void		*alive_or_dead(void *arg);
 int			ft_check_args(int ac, char **av);
 int			ft_check_empty(char **av);
 int			ft_check_int(char **av);
+int			ft_check_double_sign(char **av);
 
 #endif

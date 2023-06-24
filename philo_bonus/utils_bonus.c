@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 06:50:08 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/23 15:29:13 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/23 22:58:44 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ void	ft_usleep(long long sleep_dur)
 
 	now_time = ft_ms_cur_time();
 	while (ft_ms_cur_time() - now_time < sleep_dur)
-		usleep(1000);
+		usleep(100);
 }

@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 07:19:19 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/06/23 20:39:39 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/06/24 01:18:36 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	join_or_destroy(t_data *data)
 void	clean_up_memory(t_philo *philo, t_data *data)
 {
 	free(philo);
+	free(data->forks);
 	free(data);
 }
 
